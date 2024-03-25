@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+     - source: /
+       destination: /mnt/datastore/nodeuser/network-admin-api
+hooks:
+     BeforeInstall:
+          - location: code-deploy-scripts/before_install.sh
+            timeout: 3600
+            runas: ubuntu
+     AfterInstall:
+          - location: code-deploy-scripts/after_install.sh
+            timeout: 3600
+            runas: ubuntu
+     ApplicationStart:
+          - location: code-deploy-scripts/application_start.sh
+            timeout: 3600
+            runas: ubuntu

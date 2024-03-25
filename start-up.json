@@ -1,0 +1,73 @@
+{
+     "apps": [
+          {
+               "name": "Network-Admin-Apis-Prod",
+               "script": "dist/index.js",
+               "instances": 1,
+               "exec_mode": "fork",
+               "min_uptime": "5s",
+               "error_file": "logs/network-admin.apis.log",
+               "out_file": "logs/network-admin.apis.log",
+               "merge_logs": true,
+               "broadcast_logs": true,
+               "log_date_format": "YYYY-MM-DD HH:mm Z",
+               "trace": true,
+               "env_development": {
+                    "NODE_ENV": "development",
+                    "APPLICATION_HOST": "http://localhost",
+                    "APPLICATION_PORT": 2020,
+                    "MONGO_HOST": "localhost:27017", 
+                    "MONGO_PORT": 27017,
+                    "MONGO_DBNAME": "networkdb",
+                    "MONGO_REPLICA_SET_NAME" : "networks-service",
+                    "MONGO_LOG_VERBOSE": true
+               }
+          },
+          {
+               "name": "Network-Admin-Apis-Stage",
+               "script": "/mnt/datastore/nodeuser/network-admin-api/dist/index.js",
+               "instances": 1,
+               "exec_mode": "fork",
+               "min_uptime": "5s",
+               "error_file": "/mnt/datastore/nodeuser/logs/network-admin.apis.log",
+               "out_file": "/mnt/datastore/nodeuser/logs/network-admin.apis.log",
+               "merge_logs": true,
+               "broadcast_logs": true,
+               "log_date_format": "YYYY-MM-DD HH:mm Z",
+               "trace": true,
+               "env_staging": {
+                    "NODE_ENV": "staging",
+                    "APPLICATION_HOST": "http://localhost",
+                    "APPLICATION_PORT": 2020,
+                    "MONGO_HOST": "localhost:27017",
+                    "MONGO_PORT": 27017,
+                    "MONGO_DBNAME": "networkdb",
+                    "MONGO_REPLICA_SET_NAME" : "networks-service",
+                    "MONGO_LOG_VERBOSE": true
+               }
+          },
+          {
+               "name": "Network-Admin-Apis-Prod",
+               "script": "/mnt/datastore/nodeuser/network-admin-api/dist/index.js",
+               "instances": 1,
+               "exec_mode": "fork",
+               "min_uptime": "5s",
+               "error_file": "/mnt/datastore/nodeuser/logs/network-admin.apis.log",
+               "out_file": "/mnt/datastore/nodeuser/logs/network-admin.apis.log",
+               "merge_logs": true,
+               "broadcast_logs": true,
+               "log_date_format": "YYYY-MM-DD HH:mm Z",
+               "trace": true,
+               "env_production": {
+                    "NODE_ENV": "production",
+                    "APPLICATION_HOST": "http://localhost",
+                    "APPLICATION_PORT": 2020,
+                    "MONGO_HOST": "localhost:27017",
+                    "MONGO_PORT": 27017,
+                    "MONGO_DBNAME": "networkdb",
+                    "MONGO_REPLICA_SET_NAME" : "networks-service",
+                    "MONGO_LOG_VERBOSE": true
+               }
+          }
+     ]
+}
